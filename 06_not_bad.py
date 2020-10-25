@@ -9,9 +9,14 @@ por 'good' e retorne a string resultante.
 Exemplo: 'The dinner is not that bad!' retorna 'The dinner is good!'
 """
 
+# TODO: Pensar em outras alternativas de testes!
+
 def not_bad(s):
-    # +++ SUA SOLUÇÃO +++
-    return
+    ini, fim = s.find('not'), s.find('bad')
+    if ini < fim:
+        return f'{s[:ini]}good{s[fim+3:]}'
+    else:
+        return s
 
 
 # --- Daqui para baixo são apenas códigos auxiliáries de teste. ---
@@ -39,3 +44,4 @@ if __name__ == '__main__':
     test(not_bad, 'This dinner is not that bad!', 'This dinner is good!')
     test(not_bad, 'This tea is not hot', 'This tea is not hot')
     test(not_bad, "It's bad yet not", "It's bad yet not")
+    test(not_bad, 'This movie is not so bad and I loved it', 'This movie is good and I loved it')
