@@ -13,7 +13,7 @@ a-frente + b-frente + a-trás + b-trás
 import math
 
 
-def front_back_manual(a, b):
+def front_back(a, b):
     size_a = len(a)
     size_b = len(b)
     if size_a % 2 == 0 and size_b % 2 == 0:
@@ -47,7 +47,7 @@ def front_back_manual(a, b):
         return front_a + front_b + back_a + back_b
 
 
-def front_back_math(a, b):
+def front_back(a, b):
     size_a = len(a)
     size_b = len(b)
     front_a = a[:math.ceil(size_a/2)]
