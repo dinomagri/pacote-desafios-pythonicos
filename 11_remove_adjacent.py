@@ -9,8 +9,30 @@ Irá retornar: [1, 2, 3]
 """
 
 def remove_adjacent(nums):
-    # +++ SUA SOLUÇÃO +++
-    return
+    if not nums:
+        return []
+
+    atual = nums[0]
+    final = [atual]
+    for proximo in nums[1:]:
+        if atual != proximo:
+            final.append(proximo)
+            atual = proximo
+        else:
+            atual = proximo
+    return final
+
+
+def remove_adjacent(nums):
+    if not nums:
+        return []
+
+    final = [nums[0]]
+    for atual, proximo in zip(nums, nums[1:]):
+        if atual != proximo:
+            final.append(proximo)
+
+    return final
 
 
 # --- Daqui para baixo são apenas códigos auxiliáries de teste. ---
@@ -36,5 +58,8 @@ if __name__ == '__main__':
     # Testes que verificam o resultado do seu código em alguns cenários.
     test(remove_adjacent, [1, 2, 2, 3], [1, 2, 3])
     test(remove_adjacent, [2, 2, 3, 3, 3], [2, 3])
+    test(remove_adjacent, [3, 2, 2, 3, 3, 3], [3, 2, 3])
     test(remove_adjacent, [], [])
     test(remove_adjacent, [2, 2, 3, 3, 3, 2, 2], [2, 3, 2])
+    test(remove_adjacent, [2, 2, 2, 2, 2, 3, 3, 3, 2, 2], [2, 3, 2])
+

@@ -58,6 +58,27 @@ import sys
 # Defina as funções print_words(filename) e print_top(filename).
 
 
+def word_count(filename):
+    dados = open(filename, 'r')
+    palavras = dados.read().split()
+    dados.close()
+
+    res = {}
+    for p in palavras:
+        p = p.lower()
+        res[p] = palavras.count(p)
+    return res
+
+
+def print_words(filename):
+    for palavra, qtde in sorted(word_count(filename).items(), key=lambda item: item[0]):
+        print(palavra, qtde)
+
+
+def print_top(filename):
+    for palavra, qtde in sorted(word_count(filename).items(), key=lambda item: item[1], reverse=True)[:20]:
+        print(palavra, qtde)
+
 # A função abaixo chama print_words() ou print_top() de acordo com os
 # parêtros do programa.
 def main():
